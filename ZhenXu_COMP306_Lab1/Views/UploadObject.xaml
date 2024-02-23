@@ -1,0 +1,84 @@
+﻿<Window x:Class="ZhenXu_COMP306_Lab1.Views.UploadObject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZhenXu_COMP306_Lab1.Views"
+        mc:Ignorable="d"
+        ContentRendered="Window_ContentRendered"
+        Title="Upload Object to S3 Bucket Window"
+        Height="450"
+        Width="800">
+    <Grid>
+        <Label Content="Bucket"
+               HorizontalAlignment="Left"
+               Margin="70,32,0,0"
+               FontSize="18"
+               VerticalAlignment="Top" />
+        <Label Content="Object"
+               HorizontalAlignment="Left"
+               Margin="70,84,0,0"
+               VerticalAlignment="Top"
+               Height="35"
+               FontSize="18"
+               Width="73"
+               RenderTransformOrigin="0.338,0.774" />
+        <ComboBox x:Name="cbBuckets"
+                  HorizontalAlignment="Left"
+                  Margin="170,31,0,0"
+                  DisplayMemberPath="BucketName"
+                  VerticalAlignment="Top"
+                  Width="365"
+                  DropDownClosed="cbBuckets_DropDownClosed"
+                  FontSize="18"
+                  Height="35" />
+        <TextBox x:Name="txtObject"
+                 HorizontalAlignment="Left"
+                 Margin="170,84,0,0"
+                 TextWrapping="Wrap"
+                 FontSize="18"
+                 VerticalAlignment="Top"
+                 Width="365"
+                 Height="35" />
+        <DataGrid x:Name="objectDataGrid"
+                  AutoGenerateColumns="False"
+                  ColumnWidth="*"
+                  d:ItemsSource="{Binding}"
+                  Margin="35,141,245,33">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="objectColumn"
+                                    Binding="{Binding Path=Key, Mode=OneWay}"
+                                    Header="Object Name" />
+                <DataGridTextColumn x:Name="dateColumn"
+                                    Binding="{Binding Path=Size, Mode=OneWay}"
+                                    Header="Size"
+                                    SortDirection="Ascending" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Browse"
+                HorizontalAlignment="Left"
+                Margin="580,56,0,0"
+                FontSize="18"
+                VerticalAlignment="Top"
+                Height="60"
+                Width="196"
+                Click="Browse_File" />
+        <Button Content="Upload"
+                HorizontalAlignment="Left"
+                Margin="580,159,0,0"
+                FontSize="18"
+                VerticalAlignment="Top"
+                Height="60"
+                Click="Upload_Object"
+                Width="196" />
+        <Button Content="Back to Main Window"
+                HorizontalAlignment="Left"
+                Margin="580,304,0,0"
+                FontSize="18"
+                VerticalAlignment="Top"
+                Height="60"
+                Width="196"
+                Click="Button_Click" />
+
+    </Grid>
+</Window>

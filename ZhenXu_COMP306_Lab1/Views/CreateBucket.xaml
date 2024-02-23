@@ -1,0 +1,73 @@
+﻿<Window x:Class="ZhenXu_COMP306_Lab1.Views.CreateBucket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZhenXu_COMP306_Lab1.Views"
+        Loaded="Window_Loaded"
+        mc:Ignorable="d"
+        Title="Create Bucket"
+        Height="435"
+        Width="800">
+    <Grid Margin="0,0,0,0">
+        <Label Content="Bucket Name"
+               HorizontalAlignment="Left"
+               Margin="49,26,0,0"
+               FontSize="18"
+               VerticalAlignment="Top" />
+        <TextBox 
+                 x:Name="txtBucketName"
+                 HorizontalAlignment="Left"
+                 Margin="178,28,0,0"
+                 TextAlignment="Justify"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="380"
+                 FontSize="20"
+                 Height="36"
+                 RenderTransformOrigin="-0.22,0.623" />
+        <Button Content="Create Bucket"
+                HorizontalAlignment="Left"
+                Margin="615,29,0,0"
+                FontSize="18"
+                VerticalAlignment="Top"
+                RenderTransformOrigin="0.484,0.073"
+                Height="34"
+                Width="130"
+                Click="Create_Bucket" />
+        <DataGrid x:Name="bucketDataGrid"
+                  AutoGenerateColumns="False"
+                  ColumnWidth="*"
+                  d:ItemsSource="{Binding}"
+                  Margin="20,114,25,121">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="bucketColumn"
+                                    Binding="{Binding Path=BucketName, Mode=OneWay}"
+                                    Header="Bucket Name" />
+                <DataGridTextColumn x:Name="dateColumn"
+                                    Binding="{Binding Path=CreationDate, Mode=OneWay}"
+                                    Header="Creation Date" 
+                                    SortDirection="Ascending"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Back to Main Window"
+                HorizontalAlignment="Left"
+                Margin="270,344,0,0"
+                VerticalAlignment="Top"
+                RenderTransformOrigin="0.883,-1.251"
+                Width="254"
+                FontSize="18"
+                Height="40"
+                Click="Back_to_Main" />
+        <Label 
+               x:Name="lblWarning"
+               Content="Bucket Name must not contain uppercase characters and white spaces"
+               HorizontalAlignment="Left"
+               Margin="178,79,0,0"
+               VerticalAlignment="Top"
+               Height="30"
+               Width="402"
+               Visibility="Hidden"/>
+
+    </Grid>
+</Window>
